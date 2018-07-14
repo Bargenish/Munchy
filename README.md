@@ -1,99 +1,81 @@
-![Meanie](https://raw.githubusercontent.com/meanie/meanie/master/meanie-logo-full.png)
+# Angular Express Seed
 
-# Express seed project
+Start an awesome app with AngularJS on the front, Express + Node on the back. This project is an
+application skeleton for a typical [AngularJS](http://angularjs.org/) web app for those who want
+to use Node to serve their app.
 
-[![github release](https://img.shields.io/github/release/meanie/express-seed.svg)](https://github.com/meanie/express-seed/releases)
-[![node dependencies](https://david-dm.org/meanie/express-seed.svg)](https://david-dm.org/meanie/express-seed)
-[![github issues](https://img.shields.io/github/issues/meanie/express-seed.svg)](https://github.com/meanie/express-seed/issues)
-[![codacy](https://img.shields.io/codacy/1c5ef6bbcc9e4772aedc4d2243949d5b.svg)](https://www.codacy.com/app/meanie/express-seed)
-[![gitter](https://img.shields.io/badge/gitter-join%20chat%20%E2%86%92-brightgreen.svg)](https://gitter.im/meanie/meanie?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+The seed contains angular libraries, test libraries and a bunch of scripts all preconfigured for
+instant web development gratification. Just clone the repo (or download the zip/tarball) and
+you're ready to develop your application.
 
-This repository contains a seed project for Express server applications written in ES5/ES6. It is part of the [Meanie](https://github.com/meanie/meanie) eco system, which is a collection of boilerplate code and libraries for developing, testing and building javascript applications using the MEAN stack (MongoDB, Express, Angular and Node).
+The seed app shows how to wire together Angular client-side components with Express on the server.
+It also illustrates writing angular partials/views with the Jade templating library.
 
-This seed project is built to work together side by side with either the [Angular seed](https://github.com/meanie/angular-seed) (ES5/ES6) or [Angular 2 seed](https://github.com/meanie/angular2-seed) (TypeScript) projects for client side applications.
+_Note: Although Jade supports interpolation, you should be doing that mostly on the client. Mixing
+server and browser templating will convolute your app. Instead, use Jade as a syntactic sugar for
+HTML, and let AngularJS take care of interpolation on the browser side._
 
-## Installation
-You can install this seed project either by manually cloning the repository, or by using the [Meanie CLI](https://www.npmjs.com/package/meanie), which will make the process a bit easier.
+## How to use angular-express-seed
 
-If you don't have the Meanie CLI tool installed, you can get it using:
+Clone the angular-express-seed repository, run `npm install` to grab the dependencies, and start hacking!
 
-```shell
-npm install -g meanie
-```
+### Running the app
 
-### Using the Meanie CLI
-```shell
-# Seed a new Express project in the current directory
-meanie seed express
+Runs like a typical express app:
 
-# Seed a new Express project in the specified directory
-meanie seed express my-project
-```
+    node app.js
 
-### Cloning from github
-```shell
-# Create empty project directory
-mkdir my-project
-cd my-project
+### Running tests
 
-# Clone repository, remove .git folder
-git clone https://github.com/meanie/express-seed.git .
-rm -rf .git
+Coming soon!
 
-# Install dependencies
-npm install
-```
+### Receiving updates from upstream
 
-### Setting the environment
-The application environment is determined by the `APP_ENV` environment variable.
-This is so you can use different application environments, e.g. `demo`, `staging`, `production`, each with a `NODE_ENV` set to `production`.
+Just fetch the changes and merge them into your project with git.
 
-## Running the server
-Once installed, you can run the server using one of the following options:
 
-```shell
-# Start the server
-npm start
-```
+## Directory Layout
+    
+    app.js              --> app config
+    package.json        --> for npm
+    public/             --> all of the files to be used in on the client side
+      css/              --> css files
+        app.css         --> default stylesheet
+      img/              --> image files
+      js/               --> javascript files
+        app.js          --> declare top-level app module
+        controllers.js  --> application controllers
+        directives.js   --> custom angular directives
+        filters.js      --> custom angular filters
+        services.js     --> custom angular services
+        lib/            --> angular and 3rd party JavaScript libraries
+          angular/
+            angular.js            --> the latest angular js
+            angular.min.js        --> the latest minified angular js
+            angular-*.js          --> angular add-on modules
+            version.txt           --> version number
+    routes/
+      api.js            --> route for serving JSON
+      index.js          --> route for serving HTML pages and partials
+    views/
+      index.jade        --> main page for app
+      layout.jade       --> doctype, title, head boilerplate
+      partials/         --> angular view partials (partial jade templates)
+        partial1.jade
+        partial2.jade
 
-Look in the `package.json` for other scripts available to you.
 
-## Folder structure
 
-The following is an outline of the folder structure of this seed project:
+## Example App
 
-```shell
-# This is where your server side Express application resides.
-├─ app
+A simple [blog](https://github.com/btford/angular-express-blog) based on this seed.
 
-# This folder contains your environment specific application config.
-├─ config
 
-# This folder is for your database migrations.
-├─ migrations
+## Contact
 
-# This folder contains the main run scripts for your application.
-├─ scripts
-
-# Test helpers and mocha options reside here.
-└─ test
-```
-
-## Issues & feature requests
-
-Please report any bugs, issues, suggestions and feature requests in the [meanie-express-seed issue tracker](https://github.com/meanie/express-seed/issues).
-
-## Contributing
-
-Pull requests are welcome! If you would like to contribute to Meanie, please check out the [Meanie contributing guidelines](https://github.com/meanie/meanie/blob/master/CONTRIBUTING.md).
-
-## Credits
-
-* Inspiration for this seed project came from [MEAN.JS](https://github.com/meanjs/mean)
-* Meanie logo designed by [Quan-Lin Sim](mailto:quan.lin.sim+meanie@gmail.com)
+For more information on AngularJS please check out http://angularjs.org/
+For more on Express and Jade, http://expressjs.com/ and http://jade-lang.com/ are
+your friends.
 
 ## License
-
-(MIT License)
-
-Copyright 2015-2017, [Adam Reis](http://adam.reis.nz)
+MIT
