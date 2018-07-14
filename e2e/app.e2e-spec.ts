@@ -1,6 +1,6 @@
 import { AppPage } from './app.po';
 
-describe('Angular Seed App', () => {
+describe('boilerplate App', () => {
   let page: AppPage;
 
   beforeEach(() => {

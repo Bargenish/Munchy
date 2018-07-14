@@ -1,6 +1,0 @@
-{
-  "projects": {
-    "ngrx-seed": "ng-ngrx-seed",
-    "default": "ng-ngrx-seed"
-  }
-}
