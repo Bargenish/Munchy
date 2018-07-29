@@ -6,27 +6,27 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
 // create a schema
-var blogSchema = new Schema({
-  title: String,
-  body: String
+var categorySchema = new Schema({
+  name: String
 });
-var Blog = mongoose.model('Blog', blogSchema);
+var Category = mongoose.model('Category', categorySchema);
 
 // methods
 function getAll() {
-  Blog.find()
+  Category.find();
 }
+
 function getOne(err, id) {
-if(err){throw err}
-  Blog.find(id)
+  if(err){throw err}
+    
+  return Category.find(id);
 }
+
 function findAndDelete(err, id) {
-getOne(id).delete()
+  getOne(id).delete();
 }
+
 function findAndUpdate(err, id) {
-
 }
 
-
-// make this available to our users in our Node applications
-module.exports = Blog;
+module.exports = Category;
