@@ -7,20 +7,26 @@ const mongoose = require('mongoose');
 const { Schema } = mongoose;
 
 // create a schema
-const categorySchema = new Schema({
-  name: String,
+const userSchema = new Schema({
+  phoneNum: String,
+  firstName: String,
+  lastName: String,
+  email: String,
+  role: String,
+  userName: String,
+  password: String,
 });
-const Category = mongoose.model('Category', categorySchema);
+const User = mongoose.model('User', userSchema);
 
 // methods
 function getAll() {
-  Category.find();
+  User.find();
 }
 
 function getOne(err, id) {
   if (err) { throw err; }
 
-  return Category.find(id);
+  return User.find(id);
 }
 
 function findAndDelete(err, id) {
@@ -30,4 +36,4 @@ function findAndDelete(err, id) {
 function findAndUpdate(err, id) {
 }
 
-module.exports = Category;
+module.exports = User;
