@@ -9,7 +9,7 @@ const { Schema } = mongoose;
 // create a schema
 const sellerSchema = new Schema({
   name: String,
-  category: [String],
+  categories: [String],
   city: String,
   location: String,
   maxDeliveryTime: Number,
