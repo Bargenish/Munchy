@@ -7,20 +7,20 @@ const mongoose = require('mongoose');
 const { Schema } = mongoose;
 
 // create a schema
-const categorySchema = new Schema({
+const roleSchema = new Schema({
   name: String,
 });
-const Category = mongoose.model('Category', categorySchema);
+const Role = mongoose.model('Role', roleSchema);
 
 // methods
 function getAll() {
-  Category.find();
+  Role.find();
 }
 
 function getOne(err, id) {
   if (err) { throw err; }
 
-  return Category.find(id);
+  return Role.find(id);
 }
 
 function findAndDelete(err, id) {
@@ -30,4 +30,4 @@ function findAndDelete(err, id) {
 function findAndUpdate(err, id) {
 }
 
-module.exports = Category;
+module.exports = Role;
