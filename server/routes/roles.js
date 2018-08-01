@@ -1,28 +1,28 @@
 const express = require('express');
 
 const router = express.Router();
-const Category = require('../models/category');
+const Role = require('../models/role');
 
 // below are example's of your basic CRUD functions and wont work
-router.route('/categories') // <host>/api/categories
+router.route('/roles') // <host>/api/roles
 
   .get((req, res) => {
-    Category.find((err, categories) => {
+    Role.find((err, roles) => {
       if (err) { res.send(err); }
 
-      res.json(categories);
+      res.json(roles);
     });
   });
 
-router.route('/categories/:category_id')
+router.route('/roles/:role_id')
 
 // get the bear with that id (accessed at GET http://localhost:8080/api/bears/:bear_id)
   .get((req, res) => {
-    Category.findById(req.params.category_id, (err, category) => {
+    Role.findById(req.params.role_id, (err, role) => {
       if (err) {
         res.send(err);
       }
-      res.json(category);
+      res.json(role);
     });
   });
 
