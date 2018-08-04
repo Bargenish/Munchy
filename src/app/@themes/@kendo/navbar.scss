@@ -1,10 +1,26 @@
-@font-face{
-    font-family: "bergenish";
-    font-style: italic;
-    font-size: 1.1rem !important;
-    src: url("https://fonts.googleapis.com/css?family=Nunito");
-}
+@font-face {
+    font-family: MyHelvetica;
+    src: local("Helvetica Neue Bold"),
+         local("HelveticaNeue-Bold");
+    font-weight: bold;
+  }
 
 .k-menu .k-item > .k-link{
-   font-family: "bergenish";
+   // font-family: "Bitstream Vera Serif Bold", serif;
+      font-size: 1.5rem !important;
+      color: rgb(117, 191, 255) !important;
+      text-shadow:1px 1px 5px rgb(173, 236, 255);
+
+}
+
+.k-dropdown .k-dropdown-wrap, .k-dropdowntree .k-dropdown-wrap{
+border-radius: 10px;
+background-image: linear-gradient(#f9fdff, #bef6fa) !important;
+border: rgb(117, 191, 255) !important;
+
+}
+
+.k-dropdown{
+  height: 2.5em;
+  width: 12.9em;
 }

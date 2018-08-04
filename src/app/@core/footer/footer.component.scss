@@ -1,0 +1,15 @@
+.socials {
+text-align: center;
+    a {
+    font-size: 26px;
+     // padding: 0.4rem;
+      transition: color ease-out 0.7s ;
+      margin: 3rem;
+      color: rgb(117, 191, 255);
+    }
+    a:hover {
+     
+        color:rgb(113, 126, 138);
+        
+      }
+  }
