@@ -19,63 +19,42 @@ server.listen(this.port, () => {
 io.on('connect', (socket) => {
   console.log('Websocket API: Connected client on port %s.', port);
 
-  socket.on('category', (body) => {
-    if (body && body.id) {
-      Category.findById(body.id, (err, category) => {
-        if (err) {
-          socket.emit('error', err);
-        }
-
-        socket.emit('category', category);
-      });
-    }
-
+  socket.on('category', () => {
     Category.find((err, categories) => {
       if (err) {
         socket.emit('error', err);
       }
 
-      socket.emit('category', categories);
+      socket.send({ 
+        type: 'category',
+        data: categories
+      });
     });
   });
 
-  socket.on('role', (body) => {
-    if (body && body.id) {
-      Role.findById(body.id, (err, role) => {
-        if (err) {
-          socket.emit('error', err);
-        }
-
-        socket.emit('role', role);
-      });
-    }
-
+  socket.on('role', () => {
     Role.find((err, roles) => {
       if (err) {
         socket.emit('error', err);
       }
 
-      socket.emit('role', roles);
+      socket.send({ 
+        type: 'role',
+        data: roles
+      });
     });
   });
 
-  socket.on('seller', (body) => {
-    if (body && body.id) {
-      Seller.findById(body.id, (err, seller) => {
-        if (err) {
-          socket.emit('error', err);
-        }
-
-        socket.emit('seller', seller);
-      });
-    }
-
+  socket.on('seller', () => {
     Seller.find((err, sellers) => {
       if (err) {
         socket.emit('error', err);
       }
 
-      socket.emit('seller', sellers);
+      socket.send({ 
+        type: 'seller',
+        data: sellers
+      });
     });
   });
 
@@ -85,7 +64,10 @@ io.on('connect', (socket) => {
         socket.emit('error', err);
       }
 
-      socket.emit('user', users);
+      socket.send({ 
+        type: 'user',
+        data: users
+      });
     });
   });
 
