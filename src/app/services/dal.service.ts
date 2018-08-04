@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import * as socketIo from 'socket.io-client';
-import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 const SERVER_URL = 'http://localhost:3000';
 const httpOptions = {
