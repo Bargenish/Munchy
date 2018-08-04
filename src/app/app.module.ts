@@ -13,6 +13,7 @@ import { AsideMenuComponent } from './@core/aside-menu/aside-menu.component';
 import { DropDownsModule } from '@progress/kendo-angular-dropdowns';
 
 import 'hammerjs';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import 'hammerjs';
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     MenuModule,
