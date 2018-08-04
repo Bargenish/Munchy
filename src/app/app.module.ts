@@ -6,19 +6,32 @@ import { AppComponent } from './app.component';
 import { AppNavbarComponent } from './@core/app-navbar/app-navbar.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MenuModule } from '@progress/kendo-angular-menu';
+import { HeaderComponent } from './@core/header/header.component';
+import { FooterComponent } from './@core/footer/footer.component';
+import { MainComponent } from './pages/main/main.component';
+import { AsideMenuComponent } from './@core/aside-menu/aside-menu.component';
+import { DropDownsModule } from '@progress/kendo-angular-dropdowns';
+
+import 'hammerjs';
 import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
     AppComponent,
-    AppNavbarComponent
+    AppNavbarComponent,
+    HeaderComponent,
+    FooterComponent,
+    MainComponent,
+    AsideMenuComponent,
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    MenuModule  
+    MenuModule,
+    DropDownsModule
+    
   ],
   providers: [],
   bootstrap: [AppComponent]
