@@ -1,9 +1,17 @@
 import { Injectable } from '@angular/core';
 import * as socketIo from 'socket.io-client';
-import { Observable } from 'rxjs/Observable';
-
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 
 const SERVER_URL = 'http://localhost:3000';
+const httpOptions = {
+  headers: new HttpHeaders({
+    'Content-Type':  'application/json',
+  })
+};
+
+interface Document {
+  _id: string;
+}
 
 @Injectable({
   providedIn: 'root'
@@ -16,7 +24,7 @@ export class DALService {
   public sellers: Object[] = [];
   public users: Object[] = [];
 
-  constructor() { 
+  constructor(private http: HttpClient) { 
     this.socket = socketIo(SERVER_URL, { transports: ['websocket'] });
     this.socket.on('error', (err) => console.log(`Websocket API ERROR: ${err}`));
     this.socket.on('message', this.handleMessage);
@@ -41,5 +49,21 @@ export class DALService {
     } catch (error) {
       console.log(`Websocket API ERROR: ${error}`);
     }
+  }
+
+  createEntity(entityName: string, document: Object) {
+    return this.http.post(`${SERVER_URL}/${this.typeMap.get(entityName)}`,
+                   document,
+                   httpOptions);
+  }
+
+  updateEntity(entityName: string, document: Document) {
+    return this.http.put(`${SERVER_URL}/${this.typeMap.get(entityName)}/${document._id}`,
+                  document,
+                  httpOptions);
+  }
+
+  deleteEntity(entityName: string, documentId: string){
+    return this.http.delete(`${SERVER_URL}/${this.typeMap.get(entityName)}/${documentId}`);
   }
 }
