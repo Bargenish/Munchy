@@ -1,24 +1,35 @@
 import { Injectable } from '@angular/core';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 
+
+const httpOptions = {
+  headers: new HttpHeaders({
+    'Content-Type':  'application/json',
+  })
+};
+const DGOV = 'https://data.gov.il'
+const citiesURI = `${DGOV}/api/action/datastore_search?resource_id=d4901968-dad3-4845-a9b0-a57d027f11ab`;
 @Injectable({
   providedIn: 'root'
 })
 export class CitiesService {
-  public cities: Object[];
+  public cities: Object[] = [];
 
-  constructor() {
-    var data = {
-      resource_id: 'd4901968-dad3-4845-a9b0-a57d027f11ab', // the resource id
-      limit: 5, // get 5 results
-      q: 'jones' // query for 'jones'
-    };
-    $.ajax({
-      url: 'https://data.gov.il/api/action/datastore_search',
-      data: data,
-      dataType: 'jsonp',
-      success: function(data) {
-        alert('Total results found: ' + data.result.total)
+  constructor(private http: HttpClient) {
+    this.http.get(
+      citiesURI
+    ).subscribe(this.handleResponse);
+  }
+
+  handleResponse = (body: any) => {
+    if (body.success) {
+      if (body.result.records.length > 0) {
+        this.cities.push(body.result.records);
+
+        this.http.get(
+          `${DGOV}${body.result._links.next}`
+        ).subscribe(this.handleResponse);
       }
-    });
-   }
+    }
+  }
 }
