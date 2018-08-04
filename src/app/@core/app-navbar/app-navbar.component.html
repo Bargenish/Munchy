@@ -1,2 +1,8 @@
 <kendo-menu [items]="items">
+        <ng-template kendoMenuItemLinkTemplate let-item="item" let-index="index">
+                <a [kendoMenuItemLink]="index" [routerLink]="item.path">
+                    {{ item.text }}
+                    <span *ngIf="item.items && item.items.length" [kendoMenuExpandArrow]="index"></span>
+                </a>
+            </ng-template>
 </kendo-menu>

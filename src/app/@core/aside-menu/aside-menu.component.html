@@ -1,6 +1,6 @@
 <aside>
   <div class="multiple" >
-  <kendo-dropdownlist  class="dropdown" placeholder="bla" [data]="categoryData" [filterable]="true" [textField]="'text'" [valueField]="'value'" (filterChange)="handleCategoryFilter($event)">
+  <kendo-dropdownlist  class="dropdown" [data]="categoryData" [filterable]="true" [textField]="'text'" [valueField]="'value'" (filterChange)="handleCategoryFilter($event)">
   </kendo-dropdownlist>
   <kendo-dropdownlist  class="dropdown" [data]="cityData" [filterable]="true" [textField]="'text'" [valueField]="'value'" (filterChange)="handleCityFilter($event)">
   </kendo-dropdownlist>

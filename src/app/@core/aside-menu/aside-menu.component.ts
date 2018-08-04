@@ -42,10 +42,10 @@ export class AsideMenuComponent implements OnInit {
     this.categoryData = this.category.filter((s) => s.text.toLowerCase().indexOf(value.toLowerCase()) !== -1);
   }
   handleCityFilter(value) {
-    this.categoryData = this.category.filter((s) => s.text.toLowerCase().indexOf(value.toLowerCase()) !== -1);
+    this.cityData = this.city.filter((s) => s.text.toLowerCase().indexOf(value.toLowerCase()) !== -1);
   }
   handleDeliveryFilter(value) {
-    this.categoryData = this.category.filter((s) => s.text.toLowerCase().indexOf(value.toLowerCase()) !== -1);
+    this.deliveryTimeData = this.deliveryTime.filter((s) => s.text.toLowerCase().indexOf(value.toLowerCase()) !== -1);
   }
 
 }

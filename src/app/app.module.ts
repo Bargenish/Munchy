@@ -14,6 +14,7 @@ import { DropDownsModule } from '@progress/kendo-angular-dropdowns';
 
 import 'hammerjs';
 import { HttpClientModule } from '@angular/common/http';
+import { MapComponent } from './pages/map/map.component';
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import { HttpClientModule } from '@angular/common/http';
     FooterComponent,
     MainComponent,
     AsideMenuComponent,
+    MapComponent,
   ],
   imports: [
     BrowserModule,

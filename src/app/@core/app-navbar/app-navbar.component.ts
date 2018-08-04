@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-app-navbar',
@@ -7,10 +8,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AppNavbarComponent implements OnInit {
   
-  public items: any[] = [{ text: 'Order now!', url: "https://www.google.com"}, {text: 'Lucky'}, {text: 'Munch'},{text: 'Map'}];
+  public items: any[] = [{ text: 'Order now!', path:''}, {text: 'Lucky', path:''}, {text: 'Munch', path:''},{text: 'Map', path:'map'}];
   public itemsManager: any[] = [{ text: 'Order now!'}, {text: 'Lucky'}, {text: 'Munch'},{text: 'Map'},{text: 'Statistics'},{text: 'Restaurants'}];
 
-  constructor() { }
+  constructor(private router: Router) {};
 
   ngOnInit() {
   }
