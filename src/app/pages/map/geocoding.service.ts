@@ -14,6 +14,6 @@ export class GeocodingService {
     const params = new HttpParams();
     params.append('address', address);
     params.append('key', 'AIzaSyBzYYjJz0ijHm9SUZYBnC6m5TkVqegF_D8');
-    return this.http.get(geocodingServiceURI, { params: params });
+    return this.http.get<any>(geocodingServiceURI, { params: params });
   }
 }

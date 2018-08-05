@@ -20,9 +20,9 @@ export class DALService {
   private socket: SocketIOClient.Socket;
   private typeMap = new Map<string, string>();
   public categories: any[] = [];
-  public roles: Object[] = [];
-  public sellers: Object[] = [];
-  public users: Object[] = [];
+  public roles: any[] = [];
+  public sellers: any[] = [];
+  public users: any[] = [];
 
   constructor(private http: HttpClient) { 
     this.typeMap.set('category', 'categories');
