@@ -15,6 +15,7 @@ import { DropDownsModule } from '@progress/kendo-angular-dropdowns';
 import 'hammerjs';
 import { HttpClientModule } from '@angular/common/http';
 import { MapComponent } from './pages/map/map.component';
+import { AgmCoreModule } from '@agm/core';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,10 @@ import { MapComponent } from './pages/map/map.component';
     AppRoutingModule,
     BrowserAnimationsModule,
     MenuModule,
-    DropDownsModule
+    DropDownsModule,
+    AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyCHbvy36drZoHYwHf_eb4ZeaCtgKjacEek'
+    })
     
   ],
   providers: [],

@@ -1,4 +1,5 @@
-<div class="container">
-    <app-aside-menu></app-aside-menu>
-
+    <div class="map-container">
+    <agm-map [latitude]="lat" [longitude]="lng">
+        <agm-marker [latitude]="lat" [longitude]="lng"></agm-marker>
+    </agm-map>
 </div>
