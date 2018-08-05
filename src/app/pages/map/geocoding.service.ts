@@ -13,7 +13,7 @@ export class GeocodingService {
   addressToLatLong(address: string) {
     const params = new HttpParams();
     params.append('address', address);
-    params.append('key', 'AIzaSyBzYYjJz0ijHm9SUZYBnC6m5TkVqegF_D8');
+    params.append('key', 'AIzaSyDIwXwMv1L8-KCq1aO6wCJ9FYxNpigsM_I');
     return this.http.get<any>(geocodingServiceURI, { params: params });
   }
 }
