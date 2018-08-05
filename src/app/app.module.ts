@@ -16,6 +16,7 @@ import 'hammerjs';
 import { HttpClientModule } from '@angular/common/http';
 import { MapComponent } from './pages/map/map.component';
 import { AgmCoreModule } from '@agm/core';
+import { StatisticsComponent } from './pages/statistics/statistics.component';
 
 @NgModule({
   declarations: [
@@ -26,6 +27,7 @@ import { AgmCoreModule } from '@agm/core';
     MainComponent,
     AsideMenuComponent,
     MapComponent,
+    StatisticsComponent,
   ],
   imports: [
     BrowserModule,
@@ -35,7 +37,7 @@ import { AgmCoreModule } from '@agm/core';
     MenuModule,
     DropDownsModule,
     AgmCoreModule.forRoot({
-      apiKey: 'AIzaSyCHbvy36drZoHYwHf_eb4ZeaCtgKjacEek'
+      apiKey: 'AIzaSyDIwXwMv1L8-KCq1aO6wCJ9FYxNpigsM_I'
     })
     
   ],

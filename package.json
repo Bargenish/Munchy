@@ -52,6 +52,7 @@
     "serve-favicon": "~2.4.2",
     "socket.io": "^2.1.1",
     "socket.io-client": "^2.1.1",
+    "yarn": "^1.9.4",
     "zone.js": "^0.8.26"
   },
   "devDependencies": {
