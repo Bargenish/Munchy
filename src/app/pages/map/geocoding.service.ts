@@ -10,10 +10,11 @@ export class GeocodingService {
 
   constructor(private http: HttpClient) { }
 
-  addressToLatLong(address: string) {
-    const params = new HttpParams();
-    params.append('address', address);
-    params.append('key', 'AIzaSyDIwXwMv1L8-KCq1aO6wCJ9FYxNpigsM_I');
-    return this.http.get<any>(geocodingServiceURI, { params: params });
+  public addressToLatLong = (address: string) => {
+    const params = new HttpParams()
+                    .set('address', address)
+                    .set('key', 'AIzaSyDIwXwMv1L8-KCq1aO6wCJ9FYxNpigsM_I');
+
+    return this.http.get<any>(geocodingServiceURI, { params });
   }
 }

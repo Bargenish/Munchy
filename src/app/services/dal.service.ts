@@ -33,6 +33,11 @@ export class DALService {
     this.socket = socketIo(SERVER_URL, { transports: ['websocket'] });
     this.socket.on('error', (err) => console.log(`Websocket API ERROR: ${err}`));
     this.socket.on('message', this.handleMessage);
+
+    this.getEntities('seller');
+    this.getEntities('category');
+    this.getEntities('user');
+    this.getEntities('role');
   }
 
   getEntities(entityName: string) {

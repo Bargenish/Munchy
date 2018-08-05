@@ -14,17 +14,19 @@ export class MapComponent implements OnInit {
   locations: Array<{lat: number, long: number}> = [];
 
   constructor(@Inject(DALService) private dal: DALService,
-              @Inject(DALService) private geo: GeocodingService) { 
+              @Inject(GeocodingService) private geo: GeocodingService) { 
     this.dal.getEntities('seller');
   }
 
   ngOnInit() {
-    this.dal.sellers.forEach((seller) => {
-      this.geo.addressToLatLong(seller.address).subscribe((res) => {
-        const currLoc = res.results[0].geometry.location;
-
-        this.locations.push({lat: currLoc.lat, long: currLoc.lng});
-      }); 
-    });
+    setTimeout((() => {
+      this.dal.sellers.forEach(((seller) => {
+        this.geo.addressToLatLong(seller.location).subscribe((res) => {
+          const currLoc = res.results[0].geometry.location;
+  
+          this.locations.push({lat: currLoc.lat, long: currLoc.lng});
+        }); 
+      }).bind(this));
+    }).bind(this), 1000);
   }
 }
