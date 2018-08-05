@@ -1,7 +1,6 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { DALService } from '../../services/dal.service';
 import { CitiesService } from '../../services/cities.service';
-import { utf8Encode } from '../../../../node_modules/@angular/compiler/src/util';
 
 @Component({
 
