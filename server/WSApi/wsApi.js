@@ -12,10 +12,6 @@ const port = process.env.PORT || PORT;
 const server = createServer(app);
 const io = socketIo(server);
 
-server.listen(this.port, () => {
-  console.log('Websocket API: Running on port %s', port);
-});
-
 io.on('connect', (socket) => {
   console.log('Websocket API: Connected client on port %s.', port);
 
@@ -76,4 +72,4 @@ io.on('connect', (socket) => {
   });
 });
 
-module.exports = app;
+module.exports = { app, server, io };

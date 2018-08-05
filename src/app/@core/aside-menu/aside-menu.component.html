@@ -1,8 +1,9 @@
+<meta charset="UTF-8">
 <aside>
   <div class="multiple" >
-  <kendo-dropdownlist  class="dropdown" [data]="categoryData" [filterable]="true" [textField]="'text'" [valueField]="'value'" (filterChange)="handleCategoryFilter($event)">
+  <kendo-dropdownlist  class="dropdown" [data]="categoryData" [filterable]="true" [textField]="'name'" [valueField]="'_id'" (filterChange)="handleCategoryFilter($event)">
   </kendo-dropdownlist>
-  <kendo-dropdownlist  class="dropdown" [data]="cityData" [filterable]="true" [textField]="'text'" [valueField]="'value'" (filterChange)="handleCityFilter($event)">
+  <kendo-dropdownlist  class="dropdown" [data]="cityData" [filterable]="true" [textField]="'שם_ישוב'" [valueField]="'שם_ישוב'" (filterChange)="handleCityFilter($event)">
   </kendo-dropdownlist>
   <kendo-dropdownlist class="dropdown" [data]="deliveryTimeData" [filterable]="true" [textField]="'text'" [valueField]="'value'" (filterChange)="handleDeliveryFilter($event)">
   </kendo-dropdownlist>

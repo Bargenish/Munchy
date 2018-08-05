@@ -19,20 +19,20 @@ interface Document {
 export class DALService {
   private socket: SocketIOClient.Socket;
   private typeMap = new Map<string, string>();
-  public categories: Object[] = [];
+  public categories: any[] = [];
   public roles: Object[] = [];
   public sellers: Object[] = [];
   public users: Object[] = [];
 
   constructor(private http: HttpClient) { 
-    this.socket = socketIo(SERVER_URL, { transports: ['websocket'] });
-    this.socket.on('error', (err) => console.log(`Websocket API ERROR: ${err}`));
-    this.socket.on('message', this.handleMessage);
-
     this.typeMap.set('category', 'categories');
     this.typeMap.set('role', 'roles');
     this.typeMap.set('seller', 'sellers');
     this.typeMap.set('user', 'users');
+    
+    this.socket = socketIo(SERVER_URL, { transports: ['websocket'] });
+    this.socket.on('error', (err) => console.log(`Websocket API ERROR: ${err}`));
+    this.socket.on('message', this.handleMessage);
   }
 
   getEntities(entityName: string) {
