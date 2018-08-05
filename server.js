@@ -4,13 +4,11 @@ const path = require('path');
 const mongoose = require('mongoose');
 const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
-const wsApi = require('./server/WSApi/wsApi');
+const { app, server, io } = require('./server/WSApi/wsApi');
 const users = require('./server/routes/users'); // route example
 const sellers = require('./server/routes/sellers');
 const roles = require('./server/routes/roles');
 const categories = require('./server/routes/categories');
-
-const app = wsApi;
 
 // mongoose setup
 const MONGOURI = 'mongodb://splash:splash@splashtv-shard-00-00-9k5zc.mongodb.net:27017,splashtv-shard-00-01-9k5zc.mongodb.net:27017,splashtv-shard-00-02-9k5zc.mongodb.net:27017/munchy?ssl=true&replicaSet=SplashTV-shard-0&authSource=admin&retryWrites=true';
@@ -39,6 +37,6 @@ app.use('/api', categories);
 // PORT is another variable that can be placed in the .env file
 const port = process.env.PORT || 3000;
 
-app.listen(port, () => {
+server.listen(port, () => {
   console.log(`Example app listening on port ${port}!`);
 });

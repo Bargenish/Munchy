@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-
+import { Observable } from 'rxjs/Observable';
+import {Observer} from 'rxjs/Observer';
+import { observable } from '../../../node_modules/rxjs';
 
 const httpOptions = {
   headers: new HttpHeaders({
@@ -13,22 +15,24 @@ const citiesURI = `${DGOV}/api/action/datastore_search?resource_id=d4901968-dad3
   providedIn: 'root'
 })
 export class CitiesService {
-  public cities: Object[] = [];
-
+  public cities: Observable<Object[]> = Observable.create(observer => {
+    this.getCities(observer);
+  });
   constructor(private http: HttpClient) {
-    this.http.get(
-      citiesURI
-    ).subscribe(this.handleResponse);
   }
 
-  handleResponse = (body: any) => {
+  private getCities(observer) {
+    this.http.get(citiesURI).subscribe((body) => this.handleResponse(body, observer));
+  }
+
+  handleResponse = (body: any, observer: Observer<Object[]>) => {
     if (body.success) {
       if (body.result.records.length > 0) {
-        this.cities.push(body.result.records);
+        observer.next(body.result.records);
 
         this.http.get(
           `${DGOV}${body.result._links.next}`
-        ).subscribe(this.handleResponse);
+        ).subscribe((body) => this.handleResponse(body, observer));
       }
     }
   }
