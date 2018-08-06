@@ -18,6 +18,7 @@ import { MapComponent } from './pages/map/map.component';
 import { AgmCoreModule } from '@agm/core';
 import { StatisticsComponent } from './pages/statistics/statistics.component';
 import {NvD3Module} from "ng2-nvd3";
+import { SellersComponent } from './pages/sellers/sellers.component';
 
 @NgModule({
   declarations: [
@@ -29,6 +30,7 @@ import {NvD3Module} from "ng2-nvd3";
     AsideMenuComponent,
     MapComponent,
     StatisticsComponent,
+    SellersComponent,
   ],
   imports: [
     BrowserModule,
