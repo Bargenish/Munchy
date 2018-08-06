@@ -13,7 +13,8 @@ const sellerSchema = new Schema({
   city: String,
   location: String,
   maxDeliveryTime: Number,
-  imageName: Number,
+  imageName: String,
+  orderNum: Number,
 });
 const Seller = mongoose.model('Seller', sellerSchema);
 
