@@ -8,15 +8,20 @@
 .k-menu .k-item > .k-link{
    // font-family: "Bitstream Vera Serif Bold", serif;
       font-size: 1.5rem !important;
-      color: rgb(117, 191, 255) !important;
-      text-shadow:1px 1px 5px rgb(173, 236, 255);
+      color: rgb(196, 196, 196) !important;
+      text-shadow:1px 1px 3px #005779;
 
 }
 
+.k-menu{
+  //margin-right: 70em !important;
+  text-align: left !important;
+
+}
 .k-dropdown .k-dropdown-wrap, .k-dropdowntree .k-dropdown-wrap{
 border-radius: 10px;
 background-image: linear-gradient(#f9fdff, #bef6fa) !important;
-border: rgb(117, 191, 255) !important;
+border: 2px solid #005779 !important;
 
 }
 

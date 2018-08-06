@@ -17,6 +17,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { MapComponent } from './pages/map/map.component';
 import { AgmCoreModule } from '@agm/core';
 import { StatisticsComponent } from './pages/statistics/statistics.component';
+import {NvD3Module} from "ng2-nvd3";
 
 @NgModule({
   declarations: [
@@ -38,8 +39,8 @@ import { StatisticsComponent } from './pages/statistics/statistics.component';
     DropDownsModule,
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyDIwXwMv1L8-KCq1aO6wCJ9FYxNpigsM_I'
-    })
-    
+    }),
+    NvD3Module
   ],
   providers: [],
   bootstrap: [AppComponent]
