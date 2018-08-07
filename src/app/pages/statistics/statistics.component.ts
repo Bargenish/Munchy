@@ -1,10 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
+import { DALService } from '../../services/dal.service';
 import * as d3 from 'd3';
 import 'nvd3';
 @Component({
   selector: 'app-statistics',
   templateUrl: './statistics.component.html',
-  styleUrls: ['./statistics.component.scss']
+  styleUrls: ['./statistics.component.scss'],
+  providers: [DALService]
 })
 export class StatisticsComponent implements OnInit {
 
@@ -17,7 +19,7 @@ export class StatisticsComponent implements OnInit {
   dataPerOrder: any;
 
 
-  constructor() {
+  constructor(@Inject(DALService) private dal: DALService) {
 
   }
   ngOnInit() {
@@ -48,28 +50,15 @@ export class StatisticsComponent implements OnInit {
       }
     };
 
-    this.dataPerCategory = [
-      {
-        key: "P60-1",
-        y: 256
-      },
-      {
-        key: "P60-2",
-        y: 445
-      },
-      {
-        key: "P40",
-        y: 225
-      },
-      {
-        key: "P73",
-        y: 127
-      },
-      {
-        key: "P71",
-        y: 128
-      }
-    ];
+    setTimeout((() => {
+      this.dal.getCategorySellers().subscribe((catSellers) => {
+        this.dataPerCategory = (catSellers as Array<any>).map(((catSeller) => ({
+          key: this.dal.categories.find(ctg => ctg._id === catSeller._id).name,
+          y: catSeller.y,
+        })).bind(this));
+      });
+    }).bind(this), 1000);
+
     this.optionsPerOrder = {
       chart: {
         type: 'pieChart',

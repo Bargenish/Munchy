@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, Inject } from '@angular/core';
 import * as socketIo from 'socket.io-client';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
@@ -24,7 +24,7 @@ export class DALService {
   public sellers: any[] = [];
   public users: any[] = [];
 
-  constructor(private http: HttpClient) { 
+  constructor(@Inject(HttpClient) private http: HttpClient) { 
     this.typeMap.set('category', 'categories');
     this.typeMap.set('role', 'roles');
     this.typeMap.set('seller', 'sellers');
@@ -70,5 +70,9 @@ export class DALService {
 
   deleteEntity(entityName: string, documentId: string){
     return this.http.delete(`${SERVER_URL}/${this.typeMap.get(entityName)}/${documentId}`);
+  }
+
+  getCategorySellers() {
+    return this.http.get<any>(`${SERVER_URL}/api/categories/sellers`);
   }
 }
