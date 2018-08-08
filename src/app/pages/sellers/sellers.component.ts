@@ -1,25 +1,29 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
 import { SortDescriptor, orderBy } from '@progress/kendo-data-query';
 import { GridDataResult } from '@progress/kendo-angular-grid';
+import { DALService } from '../../services/dal.service';
 
 @Component({
   selector: 'app-sellers',
   templateUrl: './sellers.component.html',
-  styleUrls: ['./sellers.component.scss']
+  styleUrls: ['./sellers.component.scss'],
+  providers: [DALService]
 })
 export class SellersComponent implements OnInit {
   public sort: SortDescriptor[] ;
   public gridViewData: GridDataResult;
-  public sellersList: any[]= [{"_id":"5b5c627c33416106053be522","name":"River","categories":["Noodles"],"city":"תל אביב","location":"אבן גבירול 13, תל אביב","maxDeliveryTime":60,"imageName":"river.jpg","orderNum":0}];
-  ;
-  constructor() { }
+  public sellersList: any[] = [];
+
+  constructor(@Inject(DALService) private dal: DALService) { }
 
 
   ngOnInit() {
-    this.gridViewData = {
-      data: this.sellersList,
-      total: this.sellersList.length
-  };
+    setTimeout((() => {
+      this.gridViewData = {
+        data: this.dal.sellers,
+        total: this.dal.sellers.length
+      };
+    }).bind(this), 500);
   }
 
   public sortChange(sort: SortDescriptor[]): void {
@@ -28,8 +32,8 @@ export class SellersComponent implements OnInit {
 }
 private loadSellers(): void {
   this.gridViewData = {
-      data: orderBy(this.sellersList, this.sort),
-      total: this.sellersList.length
+      data: orderBy(this.dal.sellers, this.sort),
+      total: this.dal.sellers.length
   };
 }
 onEdit(){
