@@ -1,7 +1,10 @@
 const express = require('express');
-
+const googlePlaces = require('googleplaces')('AIzaSyDIwXwMv1L8-KCq1aO6wCJ9FYxNpigsM_I', 'json');
 const router = express.Router();
 const Seller = require('../models/seller');
+const { io } = require('../WSApi/wsApi');
+textSearch = googlePlaces.textSearch;
+placeDetailsRequest = googlePlaces.placeDetailsRequest;
 
 // below are example's of your basic CRUD functions and wont work
 router.route('/sellers') // <host>/api/sellers
@@ -9,8 +12,13 @@ router.route('/sellers') // <host>/api/sellers
   // create a seller (accessed at POST http://localhost:3000/api/sellers)
   .post((req, res) => {
     const seller = new Seller(); // create a new instance of the Bear model
-    seller.title = req.body.title; // set the bears name (comes from the request)
-    seller.body = req.body.body;
+    seller.name = req.body.name; // set the bears name (comes from the request)
+    seller.city = req.body.city;
+    seller.location = req.body.location;
+    seller.maxDeliveryTime = req.body.maxDeliveryTime;
+    seller.imageName = req.body.imageName;
+    seller.orderNum = req.body.orderNum;
+
     // save the bear and check for errors
     seller.save((err) => {
       if (err) { res.send(err); }
@@ -24,6 +32,30 @@ router.route('/sellers') // <host>/api/sellers
 
       res.json(sellers);
     });
+  });
+
+router.route('/sellers/top')
+
+  .get(async (req, res) => {
+    sellersParams = (await Seller.find()).map(seller => {return { params: `${seller.name}, ${seller.location}`,
+                                                          seller};});
+    topSellers = [];
+    sellersParams.forEach(async (sellerPrm) => {
+      var parameters = {
+        query: sellerPrm.params
+      };
+  
+      sellerDetails = await textSearch(parameters, async function (error, response) {
+        if (error) throw error;
+        return await placeDetailsRequest({reference: response.results[0].reference}, function (error, response) {
+            if (error) throw error;
+
+            io.emit('top', Object.assign(sellerPrm.seller.toObject(), { rating: response.result.rating}));
+        });
+      });
+
+      
+    })
   });
 
 router.route('/sellers/cityOrders')
@@ -63,9 +95,13 @@ router.route('/sellers/cityOrders')
       if (err) {
         res.send(err);
       }
-      seller.title = req.body.title; // update the sellers info
-      seller.body = req.body.body;
-      // save the bear
+      seller.name = req.body.name; 
+      seller.city = req.body.city;
+      seller.location = req.body.location;
+      seller.maxDeliveryTime = req.body.maxDeliveryTime;
+      seller.imageName = req.body.imageName;
+      seller.orderNum = req.body.orderNum;
+      
       seller.save((err) => {
         if (err) {
           res.send(err);
