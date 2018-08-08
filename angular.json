@@ -21,11 +21,10 @@
               "src/favicon.ico"
             ],
             "styles": [
-              "src/styles.scss",
-              "./node_modules/nvd3/build/nv.d3.css"
+              "src/styles.scss"
 
             ],
-            "scripts":[ "./node_modules/jquery/dist/jquery.min.js" ]
+            "scripts":[]
           },
           "configurations": {
             "production": {

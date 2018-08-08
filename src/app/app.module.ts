@@ -19,6 +19,8 @@ import { AgmCoreModule } from '@agm/core';
 import { StatisticsComponent } from './pages/statistics/statistics.component';
 import {NvD3Module} from "ng2-nvd3";
 import { SellersComponent } from './pages/sellers/sellers.component';
+import { GridModule } from '@progress/kendo-angular-grid';
+
 
 @NgModule({
   declarations: [
@@ -42,7 +44,8 @@ import { SellersComponent } from './pages/sellers/sellers.component';
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyDIwXwMv1L8-KCq1aO6wCJ9FYxNpigsM_I'
     }),
-    NvD3Module
+    NvD3Module,
+    GridModule
   ],
   providers: [],
   bootstrap: [AppComponent]

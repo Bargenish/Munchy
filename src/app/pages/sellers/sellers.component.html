@@ -1,3 +1,28 @@
-<p>
-  sellers works!
-</p>
+<div class="sellersContainer">
+    <span class="create k-icon k-i-plus"></span>
+<div id="table-wrapper">
+    <kendo-grid id="table-scroll"
+    [data]="gridViewData"
+    [sortable] = "true"
+    [sort] = "sort"
+    (sortChange)="sortChange($event)" >
+     <kendo-grid-column title="#" width="60%">
+         <ng-template kendoGridCellTemplate let-dataItem>
+             <img class="sellersLogo" src="../../../assets/images/{{dataItem.imageName}}">
+         </ng-template> 
+     </kendo-grid-column>
+     <kendo-grid-column field="name" title="Title" ></kendo-grid-column>
+     <kendo-grid-column field="city"  title="City"></kendo-grid-column>
+     <kendo-grid-column field="location" title="Address"></kendo-grid-column>
+     <kendo-grid-column field="maxDeliveryTime" title="Max Delivery Time">
+     </kendo-grid-column>
+     <kendo-grid-column field="categories" title="Categories"></kendo-grid-column>
+   <kendo-grid-column title="Actions">
+   <ng-template kendoGridCellTemplate let-dataItem>
+      <span class="actionLogo k-icon k-i-edit"></span>
+      <span class="actionLogo k-icon k-i-delete"></span>
+  </ng-template> 
+</kendo-grid-column>
+  </kendo-grid>
+  </div>
+</div>
