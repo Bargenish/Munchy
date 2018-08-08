@@ -19,8 +19,8 @@
      <kendo-grid-column field="categories" title="Categories"></kendo-grid-column>
    <kendo-grid-column title="Actions">
    <ng-template kendoGridCellTemplate let-dataItem>
-      <span class="actionLogo k-icon k-i-edit"></span>
-      <span class="actionLogo k-icon k-i-delete"></span>
+     <app-edit></app-edit>
+     <app-delete [id]="dataItem._id"></app-delete>
   </ng-template> 
 </kendo-grid-column>
   </kendo-grid>

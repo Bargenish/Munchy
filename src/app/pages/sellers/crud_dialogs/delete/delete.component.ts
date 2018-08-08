@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { DALService } from '../../../../services/dal.service';
 
 @Component({
   selector: 'app-delete',
@@ -7,8 +8,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DeleteComponent implements OnInit {
   public opened: boolean = false;
-
-  constructor() { }
+  @Input() public id: string;
+  constructor(private dal: DALService) { }
 
   ngOnInit() {
   }
@@ -16,6 +17,9 @@ export class DeleteComponent implements OnInit {
   public close(status) {
     console.log(`Dialog result: ${status}`);
     this.opened = false;
+    if (status=="yes") {
+      this.dal.deleteEntity("seller", this.id);
+    }
   }
 
   public open() {

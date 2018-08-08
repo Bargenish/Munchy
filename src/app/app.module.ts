@@ -25,6 +25,7 @@ import { ButtonsModule } from '@progress/kendo-angular-buttons';
 import { CreateComponent } from './pages/sellers/crud_dialogs/create/create.component';
 import { EditComponent } from './pages/sellers/crud_dialogs/edit/edit.component';
 import { DeleteComponent } from './pages/sellers/crud_dialogs/delete/delete.component';
+import { FormsModule } from '@angular/forms';
 
 
 import { ShareModule } from '@ngx-share/core';
@@ -59,7 +60,8 @@ import { ShareModule } from '@ngx-share/core';
     GridModule,
     DialogModule,
     ButtonsModule,
-    ShareModule.forRoot()
+    ShareModule.forRoot(),
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

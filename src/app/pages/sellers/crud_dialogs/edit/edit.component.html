@@ -1,4 +1,3 @@
-<div class="example-wrapper">
   <span class="create k-icon k-i-plus"   (click)="open()" ></span>
     <kendo-dialog title="Please confirm" *ngIf="opened" (close)="close('cancel')" [minWidth]="250" [width]="450">
           <p style="margin: 30px; text-align: center;">Are you sure you want to continue?</p>
@@ -7,4 +6,3 @@
               <button kendoButton (click)="close('yes')" primary="true">Yes</button>
           </kendo-dialog-actions>
       </kendo-dialog>
-    </div>
