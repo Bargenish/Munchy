@@ -20,6 +20,9 @@ import { StatisticsComponent } from './pages/statistics/statistics.component';
 import {NvD3Module} from "ng2-nvd3";
 import { SellersComponent } from './pages/sellers/sellers.component';
 import { GridModule } from '@progress/kendo-angular-grid';
+import { CrudDialogComponent } from './pages/sellers/crud-dialog/crud-dialog.component';
+import { DialogModule } from '@progress/kendo-angular-dialog';
+
 
 
 @NgModule({
@@ -33,6 +36,7 @@ import { GridModule } from '@progress/kendo-angular-grid';
     MapComponent,
     StatisticsComponent,
     SellersComponent,
+    CrudDialogComponent,
   ],
   imports: [
     BrowserModule,
@@ -45,7 +49,8 @@ import { GridModule } from '@progress/kendo-angular-grid';
       apiKey: 'AIzaSyDIwXwMv1L8-KCq1aO6wCJ9FYxNpigsM_I'
     }),
     NvD3Module,
-    GridModule
+    GridModule,
+    DialogModule
   ],
   providers: [],
   bootstrap: [AppComponent]
