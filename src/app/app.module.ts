@@ -13,7 +13,7 @@ import { AsideMenuComponent } from './@core/aside-menu/aside-menu.component';
 import { DropDownsModule } from '@progress/kendo-angular-dropdowns';
 
 import 'hammerjs';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HttpClientJsonpModule } from '@angular/common/http';
 import { MapComponent } from './pages/map/map.component';
 import { AgmCoreModule } from '@agm/core';
 import { StatisticsComponent } from './pages/statistics/statistics.component';
@@ -22,8 +22,7 @@ import { SellersComponent } from './pages/sellers/sellers.component';
 import { GridModule } from '@progress/kendo-angular-grid';
 import { CrudDialogComponent } from './pages/sellers/crud-dialog/crud-dialog.component';
 import { DialogModule } from '@progress/kendo-angular-dialog';
-
-
+import { ShareModule } from '@ngx-share/core';
 
 @NgModule({
   declarations: [
@@ -41,6 +40,7 @@ import { DialogModule } from '@progress/kendo-angular-dialog';
   imports: [
     BrowserModule,
     HttpClientModule,
+    HttpClientJsonpModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     MenuModule,
@@ -50,7 +50,8 @@ import { DialogModule } from '@progress/kendo-angular-dialog';
     }),
     NvD3Module,
     GridModule,
-    DialogModule
+    DialogModule,
+    ShareModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]
