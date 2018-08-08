@@ -20,8 +20,11 @@ import { StatisticsComponent } from './pages/statistics/statistics.component';
 import {NvD3Module} from "ng2-nvd3";
 import { SellersComponent } from './pages/sellers/sellers.component';
 import { GridModule } from '@progress/kendo-angular-grid';
-import { CrudDialogComponent } from './pages/sellers/crud-dialog/crud-dialog.component';
 import { DialogModule } from '@progress/kendo-angular-dialog';
+import { ButtonsModule } from '@progress/kendo-angular-buttons';
+import { CreateComponent } from './pages/sellers/crud_dialogs/create/create.component';
+import { EditComponent } from './pages/sellers/crud_dialogs/edit/edit.component';
+import { DeleteComponent } from './pages/sellers/crud_dialogs/delete/delete.component';
 
 
 
@@ -36,7 +39,9 @@ import { DialogModule } from '@progress/kendo-angular-dialog';
     MapComponent,
     StatisticsComponent,
     SellersComponent,
-    CrudDialogComponent,
+    CreateComponent,
+    EditComponent,
+    DeleteComponent,
   ],
   imports: [
     BrowserModule,
@@ -50,7 +55,8 @@ import { DialogModule } from '@progress/kendo-angular-dialog';
     }),
     NvD3Module,
     GridModule,
-    DialogModule
+    DialogModule,
+    ButtonsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
