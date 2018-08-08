@@ -25,7 +25,28 @@ router.route('/sellers') // <host>/api/sellers
       res.json(sellers);
     });
   });
-router.route('/sellers/:seller_id')
+
+router.route('/sellers/cityOrders')
+
+  .get((req, res) => {
+		const aggregatorOpts = [
+			{$group: {
+        _id: '$city',
+        y: {
+          $sum: '$orderNum'
+        }
+      }} 
+		];
+
+		Seller.aggregate(aggregatorOpts).exec(((err, result) => {
+      if (err) {
+				res.send(err);
+			}
+			res.json(result);
+    }));
+	});
+
+  router.route('/sellers/:seller_id')
 
 // get the bear with that id (accessed at GET http://localhost:8080/api/bears/:bear_id)
   .get((req, res) => {

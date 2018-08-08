@@ -50,15 +50,6 @@ export class StatisticsComponent implements OnInit {
       }
     };
 
-    setTimeout((() => {
-      this.dal.getCategorySellers().subscribe((catSellers) => {
-        this.dataPerCategory = (catSellers as Array<any>).map(((catSeller) => ({
-          key: this.dal.categories.find(ctg => ctg._id === catSeller._id).name,
-          y: catSeller.y,
-        })).bind(this));
-      });
-    }).bind(this), 1000);
-
     this.optionsPerOrder = {
       chart: {
         type: 'pieChart',
@@ -84,29 +75,20 @@ export class StatisticsComponent implements OnInit {
       }
     };
 
-    this.dataPerOrder = [
-      {
-        key: "P60-1",
-        y: 256
-      },
-      {
-        key: "P60-2",
-        y: 445
-      },
-      {
-        key: "P40",
-        y: 225
-      },
-      {
-        key: "P73",
-        y: 127
-      },
-      {
-        key: "P71",
-        y: 128
-      }
-    ];
+    setTimeout((() => {
+      this.dal.getCategorySellers().subscribe((catSellers) => {
+        this.dataPerCategory = (catSellers as Array<any>).map(((catSeller) => ({
+          key: this.dal.categories.find(ctg => ctg._id === catSeller._id).name,
+          y: catSeller.y,
+        })).bind(this));
+      });
 
+      this.dal.getCitiesOrders().subscribe((citiesOrders) => {
+        this.dataPerOrder = (citiesOrders as Array<any>).map(((cityOrders) => ({
+          key: cityOrders._id,
+          y: cityOrders.y,
+        })).bind(this));
+      });
+    }).bind(this), 1000);
   }
-
 }

@@ -75,4 +75,8 @@ export class DALService {
   getCategorySellers() {
     return this.http.get<any>(`${SERVER_URL}/api/categories/sellers`);
   }
+
+  getCitiesOrders() {
+    return this.http.get<any>(`${SERVER_URL}/api/sellers/cityOrders`);
+  }
 }

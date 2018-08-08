@@ -19,16 +19,16 @@ router.route('/categories') // <host>/api/categories
 	.get((req, res) => {
 		const aggregatorOpts = [
 			{$lookup: {
-        from: 'sellers',
-        localField: 'name',
-        foreignField: 'categories',
-        as: 'data'
-      }},
+        		from: 'sellers',
+        		localField: 'name',
+        		foreignField: 'categories',
+        		as: 'data'
+      		}},
 			{$unwind: '$data'},
 			{$group: {
-        _id: '$_id',
-        y: {$sum: 1}
-      }} 
+        		_id: '$_id',
+        		y: {$sum: 1}
+      		}} 
 		];
 
 		Category.aggregate(aggregatorOpts).exec(((err, result) => {
