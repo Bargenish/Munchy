@@ -10,8 +10,10 @@ import { GridDataResult } from '@progress/kendo-angular-grid';
 export class SellersComponent implements OnInit {
   public sort: SortDescriptor[] ;
   public gridViewData: GridDataResult;
-  public sellersList: any[];
+  public sellersList: any[]= [{"_id":"5b5c627c33416106053be522","name":"River","categories":["Noodles"],"city":"תל אביב","location":"אבן גבירול 13, תל אביב","maxDeliveryTime":60,"imageName":"river.jpg","orderNum":0}];
+  ;
   constructor() { }
+
 
   ngOnInit() {
     this.gridViewData = {
@@ -19,6 +21,7 @@ export class SellersComponent implements OnInit {
       total: this.sellersList.length
   };
   }
+
   public sortChange(sort: SortDescriptor[]): void {
     this.sort = sort;
     this.loadSellers();
@@ -28,5 +31,15 @@ private loadSellers(): void {
       data: orderBy(this.sellersList, this.sort),
       total: this.sellersList.length
   };
+}
+onEdit(){
+
+}
+onCreate(){
+
+}
+
+onDelete(){
+  
 }
 }
