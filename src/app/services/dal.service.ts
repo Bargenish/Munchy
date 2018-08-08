@@ -56,20 +56,20 @@ export class DALService {
     }
   }
 
-  createEntity(entityName: string, document: Object) {
-    return this.http.post(`${SERVER_URL}/${this.typeMap.get(entityName)}`,
+  createEntity(entityName: string, document: any) {
+    return this.http.post(`${SERVER_URL}/api/${this.typeMap.get(entityName)}`,
                    document,
                    httpOptions);
   }
 
   updateEntity(entityName: string, document: Document) {
-    return this.http.put(`${SERVER_URL}/${this.typeMap.get(entityName)}/${document._id}`,
+    return this.http.put(`${SERVER_URL}/api/${this.typeMap.get(entityName)}/${document._id}`,
                   document,
                   httpOptions);
   }
 
   deleteEntity(entityName: string, documentId: string){
-    return this.http.delete(`${SERVER_URL}/${this.typeMap.get(entityName)}/${documentId}`);
+    return this.http.delete(`${SERVER_URL}/api/${this.typeMap.get(entityName)}/${documentId}`);
   }
 
   getCategorySellers() {
