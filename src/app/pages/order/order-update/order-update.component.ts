@@ -15,5 +15,6 @@ export class OrderUpdateComponent implements OnInit {
   order(){
     this.seller.orderNum = this.seller.orderNum+1;
      this.dal.updateEntity("seller", this.seller).subscribe((res) => console.log(res));
+     alert(`Your order to  ${this.seller.name} was succefully added`);
    }
 }
