@@ -1,10 +1,11 @@
 <div class="sellersContainer">
-        <app-create></app-create>
 <div id="table-wrapper">
     <kendo-grid id="table-scroll"
     [data]="gridViewData"
     [sortable] = "true"
     [sort] = "sort"
+    [filterable]="true"
+    (dataStateChange)="dataStateChange($event)"
     (sortChange)="sortChange($event)" >
      <kendo-grid-column title="#" width="60%">
          <ng-template kendoGridCellTemplate let-dataItem>
@@ -14,13 +15,12 @@
      <kendo-grid-column field="name" title="Title" ></kendo-grid-column>
      <kendo-grid-column field="city"  title="City"></kendo-grid-column>
      <kendo-grid-column field="location" title="Address"></kendo-grid-column>
-     <kendo-grid-column field="maxDeliveryTime" title="Max Delivery Time">
+     <kendo-grid-column field="maxDeliveryTime" title="Max Delivery Time" [filerable] = false>
      </kendo-grid-column>
      <kendo-grid-column field="categories" title="Categories"></kendo-grid-column>
    <kendo-grid-column title="Actions">
    <ng-template kendoGridCellTemplate let-dataItem>
-     <app-edit [seller]="dataItem"></app-edit>
-     <app-delete [id]="dataItem._id"></app-delete>
+      <app-order-update [seller]="dataItem"></app-order-update>
   </ng-template> 
 </kendo-grid-column>
   </kendo-grid>

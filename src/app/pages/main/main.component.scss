@@ -2,6 +2,7 @@
 .container{
     margin-bottom: 3rem;
     margin-top: 3rem;
+    text-align: center;
 }
 .video_container{
     text-align: center;
@@ -11,3 +12,8 @@
     }
 }
 
+#title{
+    font-size: 1.5rem;
+    color: rgb(196, 196, 196);
+    text-shadow:1px 1px 3px #005779;
+}

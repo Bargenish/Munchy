@@ -9,7 +9,7 @@ import { Router } from '@angular/router';
 export class AppNavbarComponent implements OnInit {
   
   //public items: any[] = [{ text: 'Order now!', path:''}, {text: 'Lucky', path:''}, {text: 'Munch', path:''},{text: 'Map', path:'map'}];
-  public items: any[] = [{ text: 'Order now!', path:''}, {text: 'Lucky', path:''}, {text: 'Munch', path:''},{text: 'Map', path:'map'},{text: 'Statistics', path:'statistics'},{text: 'Restaurants', path:'restaurants'}];
+  public items: any[] = [{ text: 'Munchy', path:''}, {text: 'Order Now!', path:'order'}, {text: 'Lucky', path:'lucky'},{text: 'Map', path:'map'},{text: 'Statistics', path:'statistics'},{text: 'Restaurants', path:'restaurants'}];
 
   constructor(private router: Router) {};
 

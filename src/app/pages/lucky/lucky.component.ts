@@ -14,10 +14,10 @@ export class LuckyComponent implements OnInit {
 
   }
 
-  private getTopSeller() {
-    return this.dal.topSellers
-      .sort((a, b) => b.orderNum - a.orderNum)
-      .slice(0,2)
-      .sort((a,b) => b.rating - a.rating)[0];
-  }
+//   private getTopSeller() {
+//     return this.dal.topSellers
+//       .sort((a, b) => b.orderNum - a.orderNum)
+//       .slice(0,2)
+//       .sort((a,b) => b.rating - a.rating)[0];
+//   }
 }

@@ -1,11 +1,12 @@
-import { Component, OnInit, Inject } from '@angular/core';
+import { Component, OnInit, Inject, ViewEncapsulation } from '@angular/core';
 import { DALService } from '../../../../services/dal.service';
 
 @Component({
   selector: 'app-create',
   templateUrl: './create.component.html',
   styleUrls: ['./create.component.scss'],
-  providers: [DALService]
+  providers: [DALService],
+  encapsulation: ViewEncapsulation.None
 })
 export class CreateComponent implements OnInit {
   public opened: boolean = false;
@@ -32,6 +33,7 @@ export class CreateComponent implements OnInit {
 
   onSubmit(){
     this.model.orderNum=0;
+    this.model.maxDeliveryTime = parseInt(this.model.maxDeliveryTime);
     var x =  JSON.stringify(this.model);
     this.dal.createEntity("seller", x).subscribe(()=> {return true;});
     this.opened = false;

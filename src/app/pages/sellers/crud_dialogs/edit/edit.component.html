@@ -1,8 +1,53 @@
-  <span class="actionLogo k-icon k-i-plus"   (click)="open()" ></span>
-    <kendo-dialog title="Please confirm" *ngIf="opened" (close)="close('cancel')" [minWidth]="250" [width]="450">
-          <p style="margin: 30px; text-align: center;">Are you sure you want to continue?</p>
-          <kendo-dialog-actions>
-              <button kendoButton (click)="close('no')">No</button>
-              <button kendoButton (click)="close('yes')" primary="true">Yes</button>
-          </kendo-dialog-actions>
-      </kendo-dialog>
+            <span class="actionLogo k-icon k-i-edit"  (click)="open()"></span>
+            <kendo-dialog title="Please confirm" *ngIf="opened" (close)="close('cancel')" [width]="450">
+                <div class="card">
+                    <div class="card-block">
+                        <form name="form" (ngSubmit)="onSubmit()" class="k-form">
+                            <div class="form-group">
+                                <fieldset>
+                                    <legend>Restaurant Details</legend>
+        
+                                    <label class="k-form-field">
+                                        <span>Restaurant Name</span>
+                                        <input class="k-textbox form-control" name="name" [value]="getSellerName()" [(ngModel)]="model.name" #name="ngModel"
+                                        />
+                                    </label>
+                            
+                                    <label class="k-form-field">
+                                        <span>City</span>
+                                        <input class="k-textbox form-control" name="city" [(ngModel)]="model.city" #city="ngModel" placeholder="לדוגמה: תל אביב"
+                                        />
+                                    </label>
+        
+                                    <label class="k-form-field">
+                                        <span>Address</span>
+                                        <input class="k-textbox form-control" name="address" [(ngModel)]="model.address" #address="ngModel" placeholder="לדוגמה: אבן גבירול 13, תל אביב"
+                                        />
+                                    </label>
+                                    <label class="k-form-field">
+                                        <span>Categories</span>
+                                        <kendo-multiselect name="categories" [data]="categories" [(ngModel)]="model.categories">
+                                        </kendo-multiselect>
+                                    </label>
+        
+                                    <label class="k-form-field">
+                                        <span>Max Delivery Time</span>
+                                        <input class="k-textbox form-control" name="maxDeliveryTime" [(ngModel)]="model.maxDeliveryTime" #maxDeliveryTime="ngModel"
+                                            placeholder="15/30/45/60" />
+                                    </label>
+        
+                                    <label class="k-form-field">
+                                        <span>Image Name</span>
+                                        <input class="k-textbox form-control" name="imageName" [(ngModel)]="model.imageName" #imageName="ngModel" placeholder="e.g river.jpg"
+                                        />
+                                    </label>
+                                </fieldset>
+                                <kendo-dialog-actions>
+                                    <button kendoButton (click)="close()">Cancel</button>
+                                    <button type="button" class="k-button k-primary form-group" (click)="onSubmit()">Submit</button>
+                                </kendo-dialog-actions>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </kendo-dialog>

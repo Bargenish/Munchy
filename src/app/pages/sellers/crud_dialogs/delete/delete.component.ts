@@ -18,7 +18,8 @@ export class DeleteComponent implements OnInit {
     console.log(`Dialog result: ${status}`);
     this.opened = false;
     if (status=="yes") {
-      this.dal.deleteEntity("seller", this.id);
+      this.dal.deleteEntity("seller", this.id).subscribe((res) => console.log(res));
+      
     }
   }
 

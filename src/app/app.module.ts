@@ -11,7 +11,6 @@ import { FooterComponent } from './@core/footer/footer.component';
 import { MainComponent } from './pages/main/main.component';
 import { AsideMenuComponent } from './@core/aside-menu/aside-menu.component';
 import { DropDownsModule } from '@progress/kendo-angular-dropdowns';
-
 import 'hammerjs';
 import { HttpClientModule, HttpClientJsonpModule } from '@angular/common/http';
 import { MapComponent } from './pages/map/map.component';
@@ -29,6 +28,9 @@ import { FormsModule } from '@angular/forms';
 
 
 import { ShareModule } from '@ngx-share/core';
+import { LuckyComponent } from './pages/lucky/lucky.component';
+import { OrderComponent } from './pages/order/order.component';
+import { OrderUpdateComponent } from './pages/order/order-update/order-update.component';
 
 @NgModule({
   declarations: [
@@ -44,6 +46,9 @@ import { ShareModule } from '@ngx-share/core';
     CreateComponent,
     EditComponent,
     DeleteComponent,
+    LuckyComponent,
+    OrderComponent,
+    OrderUpdateComponent
   ],
   imports: [
     BrowserModule,
