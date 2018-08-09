@@ -50,6 +50,7 @@ public state: State = {
 public dataStateChange(state: DataStateChangeEvent): void {
   this.state = state;
   this.gridViewData = process(this.dal.sellers, this.state);
+  
 }
 
 }
